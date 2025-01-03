@@ -1,0 +1,9 @@
+main
+stupid*.py
+bup*.py
+bup*.c
+*.png
+*.txt
+*.zip
+*.7z
+
