@@ -12,7 +12,7 @@
 bool flags[RULES_LEN],*par;
 int valc,zbvm[46],defsco[RULES_LEN*RULES_LEN],scores_s[RULES_LEN*RULES_LEN],scores_n[RULES_LEN*RULES_LEN],*vals,**rules;
 long long ts[TS_LEN][2];
-void mergesort(long long *a, int l, int r) {
+void mergesort(long long *a,int l,int r){
     if(l+1>=r)
         return;
     int mid=(l+r)/2;
@@ -221,11 +221,11 @@ int main(void){
         }
         long long *tosort=malloc(candc*sizeof(long long));
         for(int i=0;i<candc;i++)
-            tosort[i]=(((((long long)scores_s[cands[i]])<<16)/scores_n[cands[i]])<<30)|cands[i];
+            tosort[i]=(((((long long)scores_s[cands[i]])<<30)/scores_n[cands[i]])<<20)|cands[i];
         mergesort(tosort,0,candc);
         int ncc=0;
         while((ncc+1)<candc*(1-FILTER_RATE)){
-            cands[ncc]=tosort[ncc]&((1<<30)-1);
+            cands[ncc]=tosort[ncc]&((1<<20)-1);
             ncc++;
         }
         free(tosort);
